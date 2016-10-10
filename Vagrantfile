@@ -13,6 +13,7 @@ Vagrant.configure(2) do |config|
       fi
       cp /vagrant/shared/ubuntu1 /home/vagrant/.ssh/id_rsa
       chown vagrant /home/vagrant/.ssh/id_rsa
+      chmod 600 /home/vagrant/.ssh/id_rsa
       cp /vagrant/shared/ubuntu1.pub /home/vagrant/.ssh/id_rsa.pub
       cat /vagrant/shared/ubuntu1.pub >> /home/vagrant/.ssh/authorized_keys
     SHELL
@@ -63,7 +64,7 @@ Vagrant.configure(2) do |config|
     echo "Donwloaded Hadoop 2.7.3 binaries"
     sudo tar -zxvf /home/vagrant/hadoop-2.7.3.tar.gz -C /usr/local/
     sudo ln -sf /usr/local/hadoop-2.7.3/ /usr/local/hadoop
-    sudo chwon -R vagrant /usr/local/hadoop/
+    sudo chown -R vagrant /usr/local/hadoop/
     sudo cp /vagrant/shared/hadoop-files/* /usr/local/hadoop/etc/hadoop/
 
     #Setup bashrc
