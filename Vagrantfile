@@ -59,6 +59,9 @@ Vagrant.configure(2) do |config|
     #Configure hostname resolution
     sudo echo "10.0.0.10 ubuntu1.tallerhadoop1.org ubuntu1" >> /etc/hosts
     sudo echo "10.0.0.11 ubuntu2.tallerhadoop1.org ubuntu2" >> /etc/hosts
+    cat /etc/hosts | grep -v ^127.0.1.1 | grep -v ^f | grep -v ^: | grep -v ^# > hosts
+    sudo cp hosts /etc/hosts
+    rm hosts
 
     #Download Hadoop 2.7.3 Binary
     wget http://ftp.cixug.es/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz -P /home/vagrant/
